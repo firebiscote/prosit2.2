@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "Decryption.h"
 #include "Encryption.h"
 
 namespace CppCLRWinformsProjekt {
@@ -74,6 +75,8 @@ namespace CppCLRWinformsProjekt {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
@@ -81,8 +84,6 @@ namespace CppCLRWinformsProjekt {
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -148,6 +149,22 @@ namespace CppCLRWinformsProjekt {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Encryption settings";
 			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(148, 49);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(100, 22);
+			this->textBox5->TabIndex = 7;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(26, 52);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(116, 17);
+			this->label5->TabIndex = 6;
+			this->label5->Text = L"Encryption level :";
+			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
@@ -209,22 +226,7 @@ namespace CppCLRWinformsProjekt {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Decryption";
 			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(26, 52);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(116, 17);
-			this->label5->TabIndex = 6;
-			this->label5->Text = L"Encryption level :";
-			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(148, 49);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(100, 22);
-			this->textBox5->TabIndex = 7;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// Form1
 			// 
@@ -251,6 +253,13 @@ namespace CppCLRWinformsProjekt {
 		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
 		std::string newPath = chars2;
 		Encryption(path, newPath, Convert::ToInt32(textBox5->Text), Convert::ToChar(textBox4->Text), Convert::ToInt32(textBox3->Text));
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		const char* chars = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
+		std::string path = chars;
+		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
+		std::string newPath = chars2;
+		Decryption(path, newPath, Convert::ToInt32(textBox5->Text), Convert::ToChar(textBox4->Text), Convert::ToInt32(textBox3->Text));
 	}
 };
 }
