@@ -248,22 +248,20 @@ namespace CppCLRWinformsProjekt {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		const char* chars = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
-		std::string path = chars;
-		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
-		std::string newPath = chars2;
+		std::string path = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
+		std::string newPath = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
+		int level = (textBox5->Text == "") ? 0 : Convert::ToInt32(textBox5->Text);
 		char XORkey = (textBox4->Text == "") ? 'a' : Convert::ToChar(textBox4->Text);
 		int caesarKey = (textBox3->Text == "") ? 0 : caesarKey = Convert::ToInt32(textBox3->Text);
-		Encryption(path, newPath, Convert::ToInt32(textBox5->Text), XORkey, caesarKey);
+		Encryption(path, newPath, level, XORkey, caesarKey);
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		const char* chars = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
-		std::string path = chars;
-		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
-		std::string newPath = chars2;
+		std::string path = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
+		std::string newPath = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
+		int level = (textBox5->Text == "") ? 0 : Convert::ToInt32(textBox5->Text);
 		char XORkey = (textBox4->Text == "") ? 'a' : Convert::ToChar(textBox4->Text);
 		int caesarKey = (textBox3->Text == "") ? 0 : caesarKey = Convert::ToInt32(textBox3->Text);
-		Decryption(path, newPath, Convert::ToInt32(textBox5->Text), XORkey, caesarKey);
+		Decryption(path, newPath, level, XORkey, caesarKey);
 	}
 };
 }
