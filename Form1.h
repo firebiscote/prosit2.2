@@ -252,14 +252,18 @@ namespace CppCLRWinformsProjekt {
 		std::string path = chars;
 		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
 		std::string newPath = chars2;
-		Encryption(path, newPath, Convert::ToInt32(textBox5->Text), Convert::ToChar(textBox4->Text), Convert::ToInt32(textBox3->Text));
+		char XORkey = (textBox4->Text == "") ? 'a' : Convert::ToChar(textBox4->Text);
+		int caesarKey = (textBox3->Text == "") ? 0 : caesarKey = Convert::ToInt32(textBox3->Text);
+		Encryption(path, newPath, Convert::ToInt32(textBox5->Text), XORkey, caesarKey);
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		const char* chars = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox1->Text)).ToPointer();
 		std::string path = chars;
 		const char* chars2 = (const char*)(Runtime::InteropServices::Marshal::StringToHGlobalAnsi(textBox2->Text)).ToPointer();
 		std::string newPath = chars2;
-		Decryption(path, newPath, Convert::ToInt32(textBox5->Text), Convert::ToChar(textBox4->Text), Convert::ToInt32(textBox3->Text));
+		char XORkey = (textBox4->Text == "") ? 'a' : Convert::ToChar(textBox4->Text);
+		int caesarKey = (textBox3->Text == "") ? 0 : caesarKey = Convert::ToInt32(textBox3->Text);
+		Decryption(path, newPath, Convert::ToInt32(textBox5->Text), XORkey, caesarKey);
 	}
 };
 }

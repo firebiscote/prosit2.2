@@ -6,10 +6,10 @@ using namespace std;
 Encryption::Encryption(string path, string newPath, int level, char XORkey, int caesarKey) : File(path), c_newPath(newPath) {
 	switch (level) {
 	case 1:
-		level1(XORkey);
+		level1(caesarKey);
 		break;
 	case 2:
-		level2(caesarKey);
+		level2(XORkey);
 		break;
 	case 3:
 		level3(XORkey, caesarKey);
@@ -19,7 +19,7 @@ Encryption::Encryption(string path, string newPath, int level, char XORkey, int 
 	}
 }
 
-void Encryption::level1(char XORkey) {
+void Encryption::level2(char XORkey) {
 	ofstream file(c_newPath);
 	if (file) {
 		c_file = doXOR(XORkey);
@@ -29,7 +29,7 @@ void Encryption::level1(char XORkey) {
 	}
 }
 
-void Encryption::level2(int Ckey) {
+void Encryption::level1(int Ckey) {
 	ofstream file(c_newPath);
 	if (file) {
 		c_file = doCaesar(Ckey);

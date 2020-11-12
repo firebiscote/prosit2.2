@@ -6,10 +6,10 @@ using namespace std;
 Decryption::Decryption(string path, string newPath, int level, char XORkey, int caesarKey) : File(path), c_newPath(newPath) {
 	switch (level) {
 	case 1:
-		level1(XORkey);
+		level1(caesarKey);
 		break;
 	case 2:
-		level2(caesarKey);
+		level2(XORkey);
 		break;
 	case 3:
 		level3(XORkey, caesarKey);
@@ -19,7 +19,7 @@ Decryption::Decryption(string path, string newPath, int level, char XORkey, int 
 	}
 }
 
-void Decryption::level1(char XORkey) {
+void Decryption::level2(char XORkey) {
 	ofstream file(c_newPath);
 	if (file) {
 		c_file = undoXOR(XORkey);
@@ -29,7 +29,7 @@ void Decryption::level1(char XORkey) {
 	}
 }
 
-void Decryption::level2(int Ckey) {
+void Decryption::level1(int Ckey) {
 	ofstream file(c_newPath);
 	if (file) {
 		c_file = undoCaesar(Ckey);

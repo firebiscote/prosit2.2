@@ -9,8 +9,8 @@
 class Decryption : public File {
 public:
 	Decryption(std::string path, std::string newPath, int level, char XORkey, int CaesarKey);
-	void level1(char XORkey);
-	void level2(int Ckey);
+	void level2(char XORkey);
+	void level1(int Ckey);
 	void level3(char XORkey, int Ckey);
 
 protected:
