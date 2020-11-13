@@ -25,8 +25,7 @@ void Decryption::level2(char XORkey) {
 		c_file = undoXOR(XORkey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 void Decryption::level1(int Ckey) {
@@ -35,8 +34,7 @@ void Decryption::level1(int Ckey) {
 		c_file = undoCaesar(Ckey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 void Decryption::level3(char XORkey, int Ckey) {
@@ -46,8 +44,7 @@ void Decryption::level3(char XORkey, int Ckey) {
 		c_file = undoCaesar(Ckey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 string Decryption::undoXOR(char XORkey) {

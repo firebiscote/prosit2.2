@@ -25,8 +25,7 @@ void Encryption::level2(char XORkey) {
 		c_file = doXOR(XORkey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 void Encryption::level1(int Ckey) {
@@ -35,8 +34,7 @@ void Encryption::level1(int Ckey) {
 		c_file = doCaesar(Ckey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 void Encryption::level3(char XORkey, int Ckey) {
@@ -46,8 +44,7 @@ void Encryption::level3(char XORkey, int Ckey) {
 		c_file = doXOR(XORkey);
 		file << c_file;
 	}
-	else {
-	}
+	file.close();
 }
 
 string Encryption::doXOR(char XORkey) {
